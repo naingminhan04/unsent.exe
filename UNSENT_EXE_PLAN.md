@@ -394,6 +394,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Extract reusable cat, doodle, and dice visuals into dedicated components without changing their styling.
 - [x] Add subtle synthesized interaction clicks with mute support and a restrained artboard-arrival transition.
 - [x] Add a reduced-motion safeguard for the existing animations.
+- [x] Give Scene 01 a clearer emotional premise and reframe Scene 02 as a message-received moment without changing its existing choices.
 
 ### Phase G — Verification
 

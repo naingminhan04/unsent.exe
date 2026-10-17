@@ -32,15 +32,15 @@ const questions: Question[] = [
 const scenes = [
   {
     eyebrow: "SCENE 01 / BOOT SEQUENCE",
-    title: "Initializing courage...",
-    text: "Searching for something normal to say...",
+    title: "A message that took the long way here.",
+    text: "He kept writing it, deleting it, and pretending he had more time. This is the version that finally made it out.",
     note: "ERROR 500: INTERNAL SERVER ERROR",
     button: "START GAME",
   },
   {
-    eyebrow: "SCENE 02 / FLIRTING SIMULATOR",
-    title: "What does he do when your name appears on his screen?",
-    text: "All available options have been classified as confidential.",
+    eyebrow: "SCENE 02 / MESSAGE RECEIVED",
+    title: "What do you think he does when you text him?",
+    text: "Choose the most accurate version. The draft folder has evidence.",
     note: "The cat is watching.",
     button: "CONTINUE",
   },

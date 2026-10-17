@@ -75,7 +75,7 @@ const scenes = [
 ];
 
 const tracks = [
-  { label: "Blue — Yung Kai", src: "/assets/audio/Blue-Yung-Kai.mp3" },
+  { label: "Blue", src: "/assets/audio/Blue-Yung-Kai.mp3" },
   { label: "Still With You", src: "/assets/audio/still-with-you.mp3" },
   { label: "Make It Right", src: "/assets/audio/Make It Right.mp3" },
   { label: "Boy With Luv", src: "/assets/audio/Boy With Luv.mp3" },

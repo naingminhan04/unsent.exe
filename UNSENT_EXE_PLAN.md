@@ -392,7 +392,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Use a server-side replay unlock endpoint; local progress remains local and the unlock is not stored as a client-controlled permission.
 - [x] Route an unlocked `PLAY AGAIN` action through the existing loading screen before returning to the first page.
 - [x] Extract reusable cat, doodle, and dice visuals into dedicated components without changing their styling.
-- [x] Add subtle synthesized interaction clicks with mute support and a restrained scene-arrival transition.
+- [x] Add subtle synthesized interaction clicks with mute support and a restrained artboard-arrival transition.
 - [x] Add a reduced-motion safeguard for the existing animations.
 
 ### Phase G — Verification

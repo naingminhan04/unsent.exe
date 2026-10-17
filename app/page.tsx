@@ -866,7 +866,7 @@ export default function Home() {
           </span>
         </header>
 
-        <div className="artboard" key={`${mode}-${sceneIndex}`}>
+        <div className="artboard">
           <Doodle />
           <div className="stamp">
             FOR YOUR EYES

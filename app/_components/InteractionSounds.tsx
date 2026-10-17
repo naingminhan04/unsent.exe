@@ -20,24 +20,27 @@ export function InteractionSounds({ muted }: { muted: boolean }) {
       if (!AudioContextConstructor) return;
       const context = contextRef.current || new AudioContextConstructor();
       contextRef.current = context;
-      if (context.state === "suspended") void context.resume();
+      const emit = () => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        const now = context.currentTime;
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(
+          control.tagName === "SELECT" ? 330 : 210,
+          now,
+        );
+        oscillator.frequency.exponentialRampToValueAtTime(145, now + 0.07);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.035, now + 0.008);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.085);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start(now);
+        oscillator.stop(now + 0.09);
+      };
 
-      const oscillator = context.createOscillator();
-      const gain = context.createGain();
-      const now = context.currentTime;
-      oscillator.type = "sine";
-      oscillator.frequency.setValueAtTime(
-        control.tagName === "SELECT" ? 330 : 210,
-        now,
-      );
-      oscillator.frequency.exponentialRampToValueAtTime(145, now + 0.07);
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(0.035, now + 0.008);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.085);
-      oscillator.connect(gain);
-      gain.connect(context.destination);
-      oscillator.start(now);
-      oscillator.stop(now + 0.09);
+      if (context.state === "suspended") void context.resume().then(emit);
+      else emit();
     }
 
     document.addEventListener("pointerdown", playClick);

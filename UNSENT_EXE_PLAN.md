@@ -260,6 +260,7 @@ public/assets/
 - [ ] Add licensed sprites and backgrounds.
 - [x] Add doodles and scene-specific details.
 - [x] Add the supplied local MP3 tracks with loading/progress feedback and fallback states.
+- [x] Add all supplied local tracks to the music selector, start fresh playthroughs on `Still With You`, and loop the selected track until the player switches songs.
 - [x] Add reduced-motion behavior.
 - [ ] Add metadata and deployment configuration.
 
@@ -291,10 +292,10 @@ This section records the next implementation pass requested by the creator. Do n
 ### Phase A — Copy and interaction timing
 
 - [x] Animate the startup terminal logs sequentially with persistent dots, keep the terminal box fixed-size, and reveal the complete error line with a subtle flash.
-- [x] Replace the boot error copy with `ERROR 404: COMPOSURE NOT FOUND`.
+- [x] Replace the boot error copy with `ERROR 500: INTERNAL SERVER ERROR`.
 - [x] Defer correct-answer feedback until the player clicks the question-step continuation button.
 - [x] Defer wrong-answer feedback and use `NICE TRY — the cat has recorded your suspicious behavior. You may continue anyway.`.
-- [x] Change Scene 02 title to `What would he do when he receives a message from you?`
+- [x] Change Scene 02 title to `What does he do when your name appears on his screen?`
 - [x] In Scene 02, selecting an option only stores/highlights the choice. Show its unique reaction only after the player clicks `CONTINUE`.
 - [x] Give each Scene 02 choice a different funny reaction rather than reusing `The cat says: excellent. no notes.`.
 - [x] Hide the Scene 02 reaction again when the player changes answers; show the new reaction only after the next `CONTINUE` click.
@@ -302,7 +303,19 @@ This section records the next implementation pass requested by the creator. Do n
 ### Phase B — Old Save File level selection
 
 - [x] Replace the current Scene 03 subtitle with `The save file is a little emotionally disorganized.`.
-- [x] Replace the old Scene 03 level-header line with a shorter archive prompt and add right-side padding to the level rows.
+- [x] Replace the old Scene 03 level-header line with `Choose a memory to load. The archive is being weirdly specific.` and add balanced horizontal padding to the level rows.
+- [x] Add a short, gentle save-loading sequence before applying a selected level, followed by a warm confirmation note.
+- [x] Turn Level 07 into a 3×3 tap-to-sequence word puzzle with numbered active labels, removable selections, a Give Up action, and a full animated reveal after the correct order.
+- [x] Add a concise Level 07 guide explaining that the word blocks should be tapped in sentence order and can be deselected.
+- [x] Split the requested Level 07 wording into nine sentence fragments and keep the active-color treatment consistent.
+- [x] Randomize the nine Level 07 tiles per attempt while keeping their answer order separate from their visual positions, with equal square sizing.
+- [x] Turn Level 10 into a cat-rubbing interaction with a ten-second progress meter that decays when rubbing stops, followed by its own animated reveal.
+- [x] Add a gentle cat shake and soft floating hearts while movement is advancing the Level 10 progress.
+- [x] Replace the hand emoji with a cat interaction.
+- [x] Turn the Secret Level into a ten-second waiting interaction with an `I'VE WAITED ENOUGH` gate and its own animated reveal.
+- [x] Keep the wait button available from the start; early clicks close without clearing the level, while completed progress unlocks the reveal.
+- [x] Add a half-speed preparation pause between 60% and 80% with a playful trouble message before the progress resumes.
+- [x] Temporarily keep save-level completion and selection state in memory only while the mini-games are being tested; refresh resets them.
 - [x] Make Level 07, Level 10, and the current save-file cards clickable while preserving their current visual style.
 - [x] Add hover/focus states and keyboard-accessible modal triggers for all three cards.
 - [x] Level 07 modal implies that interest was already present, but keeps it understated rather than explicitly confessing.
@@ -311,7 +324,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Each modal gets a `LOAD THIS LEVEL` action.
 - [x] Loading a level closes the modal, highlights the selected card, and renames that selected card `CURRENT SAVE FILE`.
 - [x] The original third card is labeled `SECRET LEVEL` so only the selected card receives the current-save label.
-- [x] Preserve the selected level in local storage and restore it after reload.
+- [x] Persist completed Level 07, Level 10, and Secret Level progress locally for production, while keeping the active mini-game state temporary.
 
 ### Phase C — Music and Doodle Room interactions
 
@@ -324,7 +337,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [ ] Track the player’s saved drawing event and drawing metadata per playthrough only if the creator configures private storage and accepts the privacy implications.
 - [x] Remove the duplicate rectangular lucky-note text from Scene 04; keep only the three room items.
 - [x] Make the lucky-note card clickable and open a styled modal containing the note.
-- [x] Add a `CLAIM THE LUCK` button that exports the note with its visual style, angle, and a white background.
+- [x] Add a `KEEP IT` button that exports the note with its visual style, angle, and a white background.
 - [x] Rename Scene 04 modal labels to `SPECIAL OBJECT` for a softer, less technical presentation.
 - [x] Add an eraser, palette-matched ink colors, and brush-size choices to the sketchbook.
 - [x] Keep the eraser thickness synchronized with the selected brush size, default to size 2, and include brown, matte green, and white ink.
@@ -340,6 +353,8 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Refine sketchbook control spacing, equalize action-button sizing, and stack the primary actions cleanly on small screens.
 - [x] Loop the selected track continuously instead of stopping at the end.
 - [x] Keep the music duration/progress bar visible after switching tracks and while the loop continues.
+- [x] Keep the Scene 03 Continue action locked until all three save-file levels are cleared.
+- [x] Make the Secret Level waiting game take 15 seconds, including its slowed 60–80% segment.
 
 ### Phase D — Envelope reveal
 
@@ -347,6 +362,8 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Make the envelope card itself clickable and equivalent to the `OPEN ENVELOPE` button.
 - [x] Add hover/focus feedback to the envelope card.
 - [x] Animate the envelope opening slowly and elegantly in place, keeping the scene layout stable instead of shifting the surrounding content.
+- [x] Replace the envelope-opening scene button with a `SKIP FOR YOUR SANITY` action; only clicking the envelope opens it.
+- [x] Preserve the envelope's initial size and reveal the full letter normally when it is opened.
 
 ### Phase E — Nickname tease and identity confirmation
 
@@ -355,9 +372,9 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Lock the input, dice, and continuation button during the random-name animation.
 - [x] Mark an empty submit with a red input border only; do not show a warning or trigger the randomizer from `OPEN THE FILE`.
 - [x] Keep the dice control visually stable with a centered custom pixel die: cycle faces during the roll, use perspective X/Y/Z tumble and bounce on the die glyph, settle on a final face, fade the placeholder in after a short empty-field delay, and show a one-time hydration/loading screen before restoring local state on reload.
-- [x] Keep normal hover still and 2D; preserve the real 3D cube only while an active roll is in progress. Name mapping: 1 Nway Nway, 2 Miss Maybe, 3 Plot Twist, 4 Julia, 5 Secret Boss, 6 Capi.
+- [x] Keep normal hover still and 2D; preserve the real 3D cube only while an active roll is in progress. Name mapping: faces 1–2 Nway Nway, 3–4 Julia, 5–6 Capi.
 - [x] Run the dice motion for a fixed 1-second duration, choose the random final face first, then stop on that physical face and use its simple mapped name; keep controls locked until both are complete.
-- [x] Keep the dice dots stable during the roll so they do not flash with each typed character; change to the chosen final face only when the roll settles. Mapping: 1 Nway Nway, 2 Mia, 3 Nina, 4 Julia, 5 Lily, 6 Capi.
+- [x] Keep the dice dots stable during the roll so they do not flash with each typed character; change to the chosen final face only when the roll settles. Mapping: faces 1–2 Nway Nway, 3–4 Julia, 5–6 Capi.
 - [x] Remove helper, tease, and warning messages from the nickname stage.
 - [x] Require the nickname stage action before allowing `OPEN THE FILE` to continue.
 - [x] Reject empty, whitespace-only, and untouched autofill nickname values while allowing Burmese and Japanese names.
@@ -366,13 +383,14 @@ This section records the next implementation pass requested by the creator. Do n
 
 ### Phase F — Local persistence and creator unlock
 
-- [x] Persist the current mode/stage, question index, selected answers, nickname, selected save-file level, scene index, simulator choice, envelope-open state, music track, mute state, and relevant completion flags in local storage.
+- [x] Persist the current mode/stage, question index, selected answers, nickname, scene index, simulator choice, envelope-open state, music track, mute state, selected save level, and completed save levels in local storage.
 - [x] Restore the saved state after reload and return the player to the correct stage.
 - [x] Keep creator-facing personal data out of public metadata and social previews.
 - [x] Lock the `PLAY AGAIN` button by default.
 - [x] When the locked button is clicked, show a joke explaining that replay requires talking to the person who made the website every day, while making clear that it is a joke.
 - [x] Add a creator-controlled `UNSENT_REPLAY_UNLOCK` environment variable/configuration so the creator can enable replay without editing the interaction logic.
 - [x] Use a server-side replay unlock endpoint; local progress remains local and the unlock is not stored as a client-controlled permission.
+- [x] Route an unlocked `PLAY AGAIN` action through the existing loading screen before returning to the first page.
 
 ### Phase G — Verification
 
@@ -387,7 +405,7 @@ This section records the next implementation pass requested by the creator. Do n
 
 ### Decisions needed before implementation
 
-- [x] Use `ERROR 404: COMPOSURE NOT FOUND` consistently.
+- [x] Use `ERROR 500: INTERNAL SERVER ERROR` consistently.
 - [x] Keep drawings download-only on the player’s device; do not upload them.
 - [x] Save progress locally with no remote playthrough tracking. When creator replay is unlocked and used, clear the saved local playthrough data.
 - [x] Allow the Level 10 modal to directly mention the hand-holding memory.

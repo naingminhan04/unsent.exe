@@ -396,6 +396,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Add a reduced-motion safeguard for the existing animations.
 - [x] Give Scene 01 a clearer emotional premise and reframe Scene 02 as a message-received moment without changing its existing choices.
 - [x] Reset the page scroll position to the top whenever the game mode or scene changes.
+- [x] Add a branded pixel-cat favicon using the existing paper, butter, and ink palette.
 
 ### Phase G — Verification
 

@@ -500,6 +500,10 @@ export default function Home() {
     };
   }, [mode]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [mode, sceneIndex]);
+
   function delayNicknamePlaceholder() {
     if (nicknamePlaceholderTimerRef.current !== null)
       window.clearTimeout(nicknamePlaceholderTimerRef.current);

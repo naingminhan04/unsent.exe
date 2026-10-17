@@ -395,6 +395,7 @@ This section records the next implementation pass requested by the creator. Do n
 - [x] Add subtle synthesized interaction clicks with mute support and a restrained artboard-arrival transition.
 - [x] Add a reduced-motion safeguard for the existing animations.
 - [x] Give Scene 01 a clearer emotional premise and reframe Scene 02 as a message-received moment without changing its existing choices.
+- [x] Reset the page scroll position to the top whenever the game mode or scene changes.
 
 ### Phase G — Verification
 

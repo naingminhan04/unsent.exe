@@ -77,15 +77,16 @@ const scenes = [
 const tracks = [
   { label: "Still With You", src: "/assets/audio/still-with-you.mp3" },
   { label: "Make It Right", src: "/assets/audio/Make It Right.mp3" },
-  { label: "Glue Song", src: "/assets/audio/Glue Song.mp3" },
-  { label: "Daisy Crown", src: "/assets/audio/Daisy Crown.mp3" },
   { label: "Boy With Luv", src: "/assets/audio/Boy With Luv.mp3" },
-  { label: "A Small Miracle", src: "/assets/audio/A Small Miracle.m4a" },
-  { label: "EUPHORIA", src: "/assets/audio/EUPHORIA.mp3" },
+  { label: "Euphoria", src: "/assets/audio/EUPHORIA.mp3" },
   {
     label: "Eyes, Nose, Lips",
     src: "/assets/audio/Eyes, nose, lips - Taeyang - KPop.m4a",
   },
+  { label: "Glue Song", src: "/assets/audio/Glue Song.mp3" },
+  { label: "Daisy Crown", src: "/assets/audio/Daisy Crown.mp3" },
+
+  { label: "A Small Miracle", src: "/assets/audio/A Small Miracle.m4a" },
 ];
 
 const STORAGE_KEY = "unsent-exe-playthrough";
@@ -178,7 +179,7 @@ export default function Home() {
     () =>
       [
         `Hey, ${nickname || "you"}.`,
-        "This is everything I wrote but never managed to send.",
+        "I really don't know how to express my feelings and this is the best I can do. So bear with me for a while.",
         `If you are wondering, "Why now? Where have you been all this time?", it is because every time I wanted to send you a text, I kept feeling like I wasn't good enough for you and that I might never be. So I just stopped trying altogether.`,
         "But I'm really glad I texted you that day because it has been really nice talking to you again. It made me realize that I want to know everything I have missed about you all these years. I wish I had been there for you when you needed someone. And I regret everything I did. I really wish I had texted you sooner.",
         "I don't expect anything from you. I just want you to know that every days and nights, you were always there in my daydreams. I've missed you so much.",
@@ -304,7 +305,7 @@ export default function Home() {
         setNicknameShake(false);
         setSceneIndex(0);
         setEnvelopeOpened(false);
-      setEnvelopeSkipped(false);
+        setEnvelopeSkipped(false);
         setSimulatorChoice("");
         setSimulatorFeedbackVisible(false);
         setTrackIndex(0);
@@ -907,7 +908,9 @@ export default function Home() {
                     <i>.</i>
                   </span>
                 </p>
-                <p className="terminal-error">ERROR 500: INTERNAL SERVER ERROR</p>
+                <p className="terminal-error">
+                  ERROR 500: INTERNAL SERVER ERROR
+                </p>
               </div>
               <h1>Oh. You&apos;re here.</h1>
               <p className="lede">
@@ -1512,7 +1515,8 @@ export default function Home() {
                         <p className="game-instruction">
                           <strong>ORDER THE WORDS</strong>
                           <br />
-                          Tap the blocks in the right order to rebuild the sentence.
+                          Tap the blocks in the right order to rebuild the
+                          sentence.
                         </p>
                         <div className="word-blocks">
                           {wordTileOrder.map((wordIndex) => {
